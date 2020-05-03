@@ -9,7 +9,7 @@ const contentStyle = {
 };
 
 
-const LoginView = ({}) => {
+const LoginView = () => {
 	const [login, setLogin] = useState("");
 	const [userPassword, setUserPassword] = useState("");
 	const handleSubmit = (event) => {
@@ -25,6 +25,11 @@ const LoginView = ({}) => {
 			alert('error');
 		}
 	};
+	if (sessionStorage.getItem("user") == null || sessionStorage.getItem("user") === 'undefined') {
+		window.title = "log out";
+	} else {
+		window.location = '/list'
+	}
 	return (
 		<Container>
 			<Row>

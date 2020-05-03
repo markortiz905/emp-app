@@ -4,17 +4,13 @@ import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import LoginView from "./views/components/LoginView";
 import Logout from "./views/components/Logout";
-import Details from "./views/details/Details";
 import Employees from "./views/list/Employees";
 import EmployeeDetails from "./views/details/EmployeeDetails";
-import { Col } from "react-bootstrap";
-import { updateEmployees } from './redux/actions/index'
 
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  useParams
+  Route
 } from "react-router-dom";
 
 class App extends React.Component {
@@ -41,18 +37,10 @@ class App extends React.Component {
         if ( ! window.location.href.includes("login")) {
            window.location  = "/login";
         }
-    } else {
-      this.props.store.dispatch(updateEmployees());//.then( () => console.log("Done fetching!"));
     }
     return (
       <Router>
         <div>
-          <Col>
-            
-          </Col>
-
-          {/* A <Switch> looks through its children <Route>s and
-              renders the first one that matches the current URL. */}
           <Switch>
             <Route
               path="/list"
@@ -103,19 +91,5 @@ class App extends React.Component {
   }
 }
 
-function ViewEmployee(props) {
-  let { id } = useParams();
-
-  return (
-    <div>
-      <Details
-        {...props}
-        isLoggedIn="true"
-        addPaddingTop={props.addPaddingTop}
-        employeeId={id}
-      />
-    </div>
-  );
-}
 
 export default App;

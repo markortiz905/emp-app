@@ -36,7 +36,7 @@ return (
       </Row>
       <Row style={contentStyle}>
         <Col>
-          <Card style={{width: "100%"}} >
+          <Card style={{ width: '20rem' }} >
             <Card.Img variant="top" src={ employee.profile_image ? employee.profile_image : '/employee-placeholder.jpg' } className="img-thumbnail" />
             <Card.Body>
               <Card.Title>Employee Details</Card.Title>

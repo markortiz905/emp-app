@@ -1,4 +1,4 @@
-import React, {useState}from 'react';
+import React, {useState, useEffect}from 'react';
 import FlatList from "flatlist-react";
 import { Container, ListGroup, Row, Col } from "react-bootstrap";
 import Navigation from "../components/Navigation";
@@ -34,8 +34,13 @@ const contentStyle = {
 	paddingLeft: 20,
 };
 
-const EmployeesView = ({employees, loading}) => {
+const EmployeesView = ({employees, loading, loadEmployees}) => {
 	const [search, setSearch] = useState("");//only use in this component
+	useEffect(() => {
+		if (loading) {
+			loadEmployees();
+		}
+	}, [loadEmployees, loading]);
 	return(
 		<Container>
 	      <Row>

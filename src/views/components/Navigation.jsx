@@ -1,6 +1,6 @@
 import { Navbar, Nav } from "react-bootstrap";
 
-import React, { useState, useEffect } from "react";
+import React from "react";
 
 function link () {
   if (sessionStorage.getItem("user") == null || sessionStorage.getItem("user") === 'undefined') {
