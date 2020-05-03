@@ -26,5 +26,6 @@ Requirements:
 
 ![Image description](https://github.com/markortiz905/emp-app/blob/master/captures/login.PNG)
 ![Image description](https://github.com/markortiz905/emp-app/blob/master/captures/listView.PNG)
+![Image description](https://github.com/markortiz905/emp-app/blob/master/captures/filter.PNG)
 ![Image description](https://github.com/markortiz905/emp-app/blob/master/captures/detailsView.PNG)
 
