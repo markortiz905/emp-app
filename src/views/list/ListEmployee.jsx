@@ -7,7 +7,7 @@ import SearchBar from "../components/SearchBar";
 export default function ListEmployee(props) {
 
   const [searchTerm, setSearchTerm] = useState("");
-  const [employees, setEmployees] = useState([]);
+  let [employees, setEmployees] = useState([]);
   const [loaded, setLoaded] = useState(false);
   const { history } = props;
 
@@ -16,6 +16,7 @@ export default function ListEmployee(props) {
     if (Array.isArray(employees) && employees.length) {
       return; 
     }
+    if (employees.length > 0 ) {return;}
     const url = "http://dummy.restapiexample.com/api/v1/employees" 
     console.log("fetching employee " + url);
     fetch(url)

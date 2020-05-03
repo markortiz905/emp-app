@@ -1,11 +1,14 @@
 import React from "react";
 import "./App.css";
 
-import Login from "./views/components/Login";
+import "bootstrap/dist/css/bootstrap.min.css";
+import LoginView from "./views/components/LoginView";
 import Logout from "./views/components/Logout";
-import ListEmployee from "./views/list/ListEmployee";
 import Details from "./views/details/Details";
+import Employees from "./views/list/Employees";
+import EmployeeDetails from "./views/details/EmployeeDetails";
 import { Col } from "react-bootstrap";
+import { updateEmployees } from './redux/actions/index'
 
 import {
   BrowserRouter as Router,
@@ -38,6 +41,8 @@ class App extends React.Component {
         if ( ! window.location.href.includes("login")) {
            window.location  = "/login";
         }
+    } else {
+      this.props.store.dispatch(updateEmployees());//.then( () => console.log("Done fetching!"));
     }
     return (
       <Router>
@@ -50,18 +55,19 @@ class App extends React.Component {
               renders the first one that matches the current URL. */}
           <Switch>
             <Route
-              path="/details/:id"
+              path="/list"
               render={(routeProps) => (
-                <ViewEmployee
+                <Employees
+                  store={this.props.store}
                   {...routeProps}
                   addPaddingTop={addPaddingTop}
                 />
               )}
             />
             <Route
-              path="/list"
+              path="/details/:id"
               render={(routeProps) => (
-                <ListEmployee
+                <EmployeeDetails
                   {...routeProps}
                   addPaddingTop={addPaddingTop}
                 />
@@ -83,7 +89,7 @@ class App extends React.Component {
               expact
               path="/login"
               render={(routeProps) => (
-                <Login
+                <LoginView
                   {...routeProps}
                   action={this.login} 
                   addPaddingTop={addPaddingTop}
