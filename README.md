@@ -16,11 +16,12 @@ Requirements:
 - react-redux
 - react-boostrap
 - react-router-dom
-
+- sessionStorage to emulate login/logout
 
 ## Captures/Deliverables
 
 - 3 pages Login, Employee List and Employee Details Page
+- To login please use {username: mark, password: admin}, this is only static credential data
 - captures
 
 ![Image description](https://github.com/markortiz905/emp-app/blob/master/captures/login.PNG)
