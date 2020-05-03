@@ -2,11 +2,22 @@ import { Navbar, Nav } from "react-bootstrap";
 
 import React from "react";
 
-function link () {
-  if (sessionStorage.getItem("user") == null || sessionStorage.getItem("user") === 'undefined') {
-    return <Nav><Nav.Link href="/login">Login</Nav.Link></Nav>
+function link() {
+  if (
+    sessionStorage.getItem("user") == null ||
+    sessionStorage.getItem("user") === "undefined"
+  ) {
+    return (
+      <Nav>
+        <Nav.Link href="/login">Login</Nav.Link>
+      </Nav>
+    );
   } else {
-    return <Nav><Nav.Link href="/logout">Logout</Nav.Link></Nav>
+    return (
+      <Nav>
+        <Nav.Link href="/logout">Logout</Nav.Link>
+      </Nav>
+    );
   }
 }
 

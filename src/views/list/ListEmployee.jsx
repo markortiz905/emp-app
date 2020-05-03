@@ -5,41 +5,44 @@ import Navigation from "../components/Navigation";
 import SearchBar from "../components/SearchBar";
 
 export default function ListEmployee(props) {
-
   const [searchTerm, setSearchTerm] = useState("");
   let [employees, setEmployees] = useState([]);
   const [loaded, setLoaded] = useState(false);
   const { history } = props;
 
-   useEffect(() => {
+  useEffect(() => {
     document.title = "Employees List";
     if (Array.isArray(employees) && employees.length) {
-      return; 
+      return;
     }
-    if (employees.length > 0 ) {return;}
-    const url = "http://dummy.restapiexample.com/api/v1/employees" 
+    if (employees.length > 0) {
+      return;
+    }
+    const url = "http://dummy.restapiexample.com/api/v1/employees";
     console.log("fetching employee " + url);
     fetch(url)
       .then((res) => res.json())
       .then(
         (resp) => {
-          setEmployees(resp.data)
+          setEmployees(resp.data);
         },
         // Note: it's important to handle errors here
         // instead of a catch() block so that we don't swallow
         // exceptions from actual bugs in components.
         (error) => {
-          setLoaded(false)
+          setLoaded(false);
         }
       );
-  }, [employees,setEmployees,loaded,setLoaded]);
+  }, [employees, setEmployees, loaded, setLoaded]);
 
-  if ( ! sessionStorage.getItem("user")) {
-    history.push('/login');
+  if (!sessionStorage.getItem("user")) {
+    history.push("/login");
   }
 
   const handleFilter = (employee, index) => {
-    return employee.employee_name?.toLowerCase()?.includes(searchTerm?.toLowerCase());
+    return employee.employee_name
+      ?.toLowerCase()
+      ?.includes(searchTerm?.toLowerCase());
   };
 
   const detailsHandler = (id) => {
@@ -67,12 +70,12 @@ export default function ListEmployee(props) {
     paddingRight: 20,
     paddingLeft: 20,
   };
-  
+
   return (
     <Container>
       <Row>
         <Col>
-          <Navigation/>
+          <Navigation />
         </Col>
       </Row>
       <Row>

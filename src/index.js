@@ -9,12 +9,10 @@ import { Provider } from "react-redux";
 import str from "./redux/store/index";
 //window.store = str;
 ReactDOM.render(
-	<Provider store={str}>
-	  <BrowserRouter>
-	  	
-	    	<App store={str} />
-	    
-	  </BrowserRouter>
+  <Provider store={str}>
+    <BrowserRouter>
+      <App store={str} />
+    </BrowserRouter>
   </Provider>,
   document.getElementById("root")
 );

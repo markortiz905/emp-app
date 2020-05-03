@@ -7,18 +7,13 @@ import Logout from "./views/components/Logout";
 import Employees from "./views/list/Employees";
 import EmployeeDetails from "./views/details/EmployeeDetails";
 
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route
-} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 class App extends React.Component {
-
   constructor(props) {
     super(props);
     this.state = {
-      addPaddingTop: false
+      addPaddingTop: false,
     };
   }
 
@@ -33,10 +28,13 @@ class App extends React.Component {
 
   render() {
     const { addPaddingTop } = this.state;
-    if (sessionStorage.getItem("user") == null || sessionStorage.getItem("user") === 'undefined') {
-        if ( ! window.location.href.includes("login")) {
-           window.location  = "/login";
-        }
+    if (
+      sessionStorage.getItem("user") == null ||
+      sessionStorage.getItem("user") === "undefined"
+    ) {
+      if (!window.location.href.includes("login")) {
+        window.location = "/login";
+      }
     }
     return (
       <Router>
@@ -67,9 +65,8 @@ class App extends React.Component {
               render={(routeProps) => (
                 <Logout
                   {...routeProps}
-                  action={this.logout} 
+                  action={this.logout}
                   addPaddingTop={addPaddingTop}
-                  
                 />
               )}
             />
@@ -79,7 +76,7 @@ class App extends React.Component {
               render={(routeProps) => (
                 <LoginView
                   {...routeProps}
-                  action={this.login} 
+                  action={this.login}
                   addPaddingTop={addPaddingTop}
                 />
               )}
@@ -90,6 +87,5 @@ class App extends React.Component {
     );
   }
 }
-
 
 export default App;
